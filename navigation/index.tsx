@@ -1,7 +1,7 @@
 import { createStaticNavigation, StaticParamList } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Modal from '../screens/modal';
 import DrawerNavigator from './drawer-navigator';
+import ContractorDetail from '../screens/contractor-detail';
 
 const Stack = createStackNavigator({
   screens: {
@@ -11,11 +11,20 @@ const Stack = createStackNavigator({
         headerShown: false,
       },
     },
-    Modal: {
-      screen: Modal,
+    ContractorDetail: {
+      screen: ContractorDetail,
       options: {
-        presentation: 'modal',
-        headerLeft: () => null,
+        title: 'Contractor',
+        headerBackTitle: 'Back',
+        headerTintColor: '#EF4444',
+        headerTitleStyle: {
+          color: '#111827',
+          fontWeight: '600' as const,
+        },
+        headerStyle: {
+          backgroundColor: '#FFFFFF',
+        },
+        headerShadowVisible: false,
       },
     },
   },

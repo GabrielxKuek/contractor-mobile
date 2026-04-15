@@ -1,31 +1,56 @@
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HeaderButton } from '../components/HeaderButton';
-import { TabBarIcon } from '../components/TabBarIcon';
-import One from '../screens/one';
-import Two from '../screens/two';
+import Home from '../screens/home';
+import Search from '../screens/search';
+import Messages from '../screens/messages';
+import Auth from '../screens/auth';
+import { HomeIcon, SearchIcon, MessageCircleIcon, UserIcon } from '../components/icons';
 
 const Tab = createBottomTabNavigator({
-  screenOptions: function ScreenOptions() {
-    return {
-      tabBarActiveTintColor: 'black',
-
-      headerShown: false,
-    };
+  screenOptions: {
+    tabBarActiveTintColor: '#EF4444',
+    tabBarInactiveTintColor: '#9CA3AF',
+    headerShown: false,
+    tabBarStyle: {
+      borderTopWidth: 1,
+      borderTopColor: '#F3F4F6',
+      backgroundColor: '#FFFFFF',
+      paddingBottom: 4,
+      paddingTop: 4,
+      height: 56,
+    },
+    tabBarLabelStyle: {
+      fontSize: 11,
+      fontWeight: '500' as const,
+    },
   },
   screens: {
-    One: {
-      screen: One,
-      options: ({ navigation }) => ({
-        title: 'Tab One',
-        tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        headerRight: () => <HeaderButton onPress={() => navigation.navigate('Modal')} />,
-      }),
-    },
-    Two: {
-      screen: Two,
+    Home: {
+      screen: Home,
       options: {
-        title: 'Tab Two',
-        tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        title: 'Home',
+        tabBarIcon: ({ color }: { color: string }) => <HomeIcon size={22} color={color} />,
+      },
+    },
+    Search: {
+      screen: Search,
+      options: {
+        title: 'Search',
+        tabBarIcon: ({ color }: { color: string }) => <SearchIcon size={22} color={color} />,
+      },
+    },
+    Messages: {
+      screen: Messages,
+      options: {
+        title: 'Messages',
+        tabBarIcon: ({ color }: { color: string }) => <MessageCircleIcon size={22} color={color} />,
+      },
+    },
+    Account: {
+      screen: Auth,
+      options: {
+        title: 'Account',
+        tabBarIcon: ({ color }: { color: string }) => <UserIcon size={22} color={color} />,
       },
     },
   },
